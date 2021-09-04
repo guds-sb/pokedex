@@ -1,12 +1,22 @@
-import { useEffect, useState } from 'react';
-import { getAllPokemon } from '../../services/pokedex/PokedexService';
+import { useEffect, useRef, useState } from 'react';
+import { getAllPokemon } from 'services/pokedex/PokedexService';
+import pokeballImage from 'assets/pokedexPokeball.png';
+import PokeList from './components/pokeList/PokeList';
+
+import {
+  Container,
+  PokeballScroll,
+  ContentArea
+} from './styles';
 
 type PokedexProps = {
+  mode: 'cached' | 'sortable'
 };
 
-const Pokedex = (props: PokedexProps) => {
-  const [serviceError, setServiceError] = useState<any>(null!);
+const Pokedex = ({ mode }: PokedexProps) => {
+  const [serviceError, setServiceError] = useState<Error>(null!);
   const [serviceResponse, setServiceResponse] = useState<any>({});
+  const scrollDirection = useRef<number>(0);
 
   useEffect(() => {
     getAllPokemon().subscribe({
@@ -15,21 +25,26 @@ const Pokedex = (props: PokedexProps) => {
     });
   }, []);
 
-  console.log(serviceError);
-  console.log(serviceResponse);
+  const figo = (e: any) => {
+    console.log(Math.sign(e.deltaY));
+    scrollDirection.current += Math.sign(e.deltaY);
+  }
 
   if (serviceError) {
     return (
-      <div>
+      <Container>
         {serviceError.message}
-      </div>
+      </Container>
     );
   }
 
   return (
-    <div>
-      {serviceResponse?.data?.results?.map((poke: any, index: number) => <p key={index}>{poke.name}</p>)}
-    </div>
+    <Container onWheel={figo}>
+      <PokeballScroll src={pokeballImage} />
+      <ContentArea>
+        <PokeList pokemons={serviceResponse?.results} />
+      </ContentArea>
+    </Container>
   );
 }
 

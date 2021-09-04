@@ -5,7 +5,7 @@ import Pokedex from './pages/pokedex/Pokedex';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Pokedex />
+    <Pokedex mode={'cached'} />
   </React.StrictMode>,
   document.getElementById('root')
 );
