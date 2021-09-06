@@ -18,4 +18,5 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 8px;
   background-color: ${backgroundColor};
   flex: 1;
+  cursor: pointer;
 `

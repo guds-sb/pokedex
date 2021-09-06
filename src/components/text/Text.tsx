@@ -3,12 +3,13 @@ import {
 } from './styles';
 
 type TextProps = {
-  children?: any
+  children?: any,
+  color?: string
 };
 
-const Text = ({ children }: TextProps) => {
+const Text = ({ children, color }: TextProps) => {
   return (
-    <Container>
+    <Container color={color}>
       {children}
     </Container>
   );

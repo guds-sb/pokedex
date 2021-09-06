@@ -7,19 +7,19 @@ import {
 
 type ButtonProps = {
   children?: any,
-  handler?: MouseEventHandler,
+  clickHandler?: Function,
   active?: boolean
 };
 
 const Button = ({
   children,
-  handler = () => {},
+  clickHandler,
   active = false
 }: ButtonProps) => {
   return (
     <Container
       active={active}
-      onClick={handler}
+      onClick={() => clickHandler && clickHandler()}
     >
       <Text>
         {children}
