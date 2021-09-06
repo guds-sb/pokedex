@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import { getAllPokemon } from 'services/pokedex/PokedexService';
 import pokeballImage from 'assets/pokedexPokeball.png';
 import PokeList from './components/pokeList/PokeList';
+import PokeDetailsProvider from 'contexts/pokeDetailsContext/PokeDetailsProvider';
 import PokeListProvider from 'contexts/pokeListContext/PokeListProvider';
 import FilterMenu from './components/filterMenu/FilterMenu';
+import PokeDetails from './components/pokeDetails/PokeDetails';
 
 import {
   Container,
@@ -20,8 +20,11 @@ const Pokedex = (props: PokedexProps) => {
       <PokeballScroll src={pokeballImage} />
       <ContentArea>
         <PokeListProvider>
-          <FilterMenu />
-          <PokeList />
+          <PokeDetailsProvider>
+            <FilterMenu />
+            <PokeList />
+            <PokeDetails />
+          </PokeDetailsProvider>
         </PokeListProvider>
       </ContentArea>
     </Container>

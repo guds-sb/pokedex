@@ -129,8 +129,6 @@ export const setFiltersHandler = ({
   sort,
   inverted
 }: SetFiltersHandler) => {
-  console.log(filter);
-  console.log(sort);
   const processedList = getProcessedList({
     list: listSetup.current.originalList,
     filter,
@@ -173,6 +171,7 @@ const fomatPaginationResponse = ({ list }: any) => {
     types: data.types.map((type: any) => type.type.name),
     artUrl: data.sprites.other['official-artwork'].front_default,
     iconUrl: data.sprites.versions['generation-viii'].icons.front_default,
+    moves: data.moves.map((move: any) => move.move.name)
   }));
 }
 

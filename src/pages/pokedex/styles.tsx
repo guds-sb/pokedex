@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const PokeballScroll = styled.img`
   position: fixed;
   z-index: -1;
-  top: calc(50% - 220px);
+  top: calc(75% - 220px);
   left: -220px;
 `
 
@@ -24,5 +24,5 @@ export const ContentArea = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
 `

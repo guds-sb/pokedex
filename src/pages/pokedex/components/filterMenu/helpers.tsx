@@ -12,10 +12,6 @@ type ProcessSort = {
   region: string | null
 };
 
-type ProcessInverted = {
-  option: string | null
-};
-
 export const letterList = [
   'a',
   'b',

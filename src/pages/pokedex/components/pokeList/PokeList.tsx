@@ -1,7 +1,9 @@
-import { useState, useContext, useCallback } from 'react';
+import { useState, useContext } from 'react';
 import { PokeListContext } from 'contexts/pokeListContext/PokeListProvider';
-import { zeroPad } from 'helpers';
+import { screenSize, zeroPad } from 'helpers';
 import { checkIfPageBottom } from './helpers';
+import Spinner from 'components/spinner/Spinner';
+import { PokeDetailsContext } from 'contexts/pokeDetailsContext/PokeDetailsProvider';
 
 import {
   Container,
@@ -10,7 +12,7 @@ import {
   Wrapper,
   PokeIcon
 } from './styles';
-import Spinner from 'components/spinner/Spinner';
+import { PokemonDetailsInfo } from 'pages/pokedex/types';
 
 const PokeList = () => {
   const [selected, setSelected] = useState(-1);
@@ -18,6 +20,9 @@ const PokeList = () => {
     listState,
     nextPage
   } = useContext(PokeListContext);
+  const {
+    setPokemon,
+  } = useContext(PokeDetailsContext);
 
   const {
     paginatedList,
@@ -26,6 +31,11 @@ const PokeList = () => {
   } = listState;
 
   const scrollAllHandler = () => nextPage();
+
+  const selectPokemonHandler = (poke: PokemonDetailsInfo) => {
+    setSelected(poke.id);
+    setPokemon(poke);
+  };
 
   const listStatus = () => {
     if (error) {
@@ -40,9 +50,10 @@ const PokeList = () => {
     return (
       <>
         {paginatedList.map((poke: any) => (
-          <ListItem key={poke.id} selected={selected === poke.id} onClick={() => setSelected(poke.id)}>
+          <ListItem key={poke.id} selected={selected === poke.id} onClick={() => selectPokemonHandler(poke)}>
             <PokeIcon src={poke.iconUrl} />
-            {`No${zeroPad({ number: poke.id, size: 3 })}\u00A0\u00A0\u00A0${poke.name.toUpperCase()}`}
+            {screenSize() > 1400 && `No${zeroPad({ number: poke.id, size: 3 })}\u00A0\u00A0\u00A0`}
+            {poke.name.toUpperCase()}
           </ListItem>
         ))}
         {isLoading && (

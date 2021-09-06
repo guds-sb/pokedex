@@ -20,4 +20,6 @@ export const getIdFrolUrl = ({ url }: GetIdFrolUrl) => {
   return Number.parseInt(figo?.[1]!);
 }
 
-export const zeroPad = ({ number, size }: ZeroPad) => String(number).padStart(size, '0')
+export const zeroPad = ({ number, size }: ZeroPad) => String(number).padStart(size, '0');
+
+export const screenSize = () => window.innerWidth;

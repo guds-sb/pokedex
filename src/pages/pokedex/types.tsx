@@ -10,5 +10,6 @@ export type PokemonDetailsInfo = {
   weight: number,
   types: Array<string>,
   artUrl: string,
-  iconUrl: string
+  iconUrl: string,
+  moves: Array<string>
 }

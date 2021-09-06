@@ -1,6 +1,6 @@
-import { from, map, mergeMap, of, Subject, zip } from 'rxjs';
+import { from, map, zip } from 'rxjs';
 import axios from 'axios';
-import { getIdFrolUrl, getPageOffset } from 'helpers';
+import { getIdFrolUrl } from 'helpers';
 
 type GetPaginatedPokemon = {
   ids: Array<number>

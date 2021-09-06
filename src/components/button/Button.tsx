@@ -1,5 +1,4 @@
 import Text from 'components/text/Text';
-import { MouseEventHandler } from 'react';
 
 import {
   Container,

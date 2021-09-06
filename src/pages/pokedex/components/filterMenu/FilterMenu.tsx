@@ -1,4 +1,4 @@
-import { useContext, useState, useRef, useCallback } from 'react';
+import { useContext, useRef, useCallback } from 'react';
 import { PokeListContext } from 'contexts/pokeListContext/PokeListProvider';
 import Text from 'components/text/Text';
 import Select from 'components/select/Select';
