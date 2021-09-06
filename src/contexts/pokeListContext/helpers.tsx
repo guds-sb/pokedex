@@ -116,7 +116,12 @@ export const getNextPage = ({
         listState,
         setListState,
         clearList
-      })
+      }),
+      error: (error: any) => setListState((old: ListState) => ({
+        ...old,
+        error: error?.message,
+        isLoading: false
+      }))
     });
   }
 }

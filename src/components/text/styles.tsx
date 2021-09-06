@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-type Container = {
+type ContainerProps = {
   white?: boolean
 };
 
-export const Container = styled.p<Container>`
+export const Container = styled.p<ContainerProps>`
   margin: 0;
   color: ${({ color }) => color ? `#${color}` : 'black'};
   font-size: 40px;

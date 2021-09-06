@@ -36,7 +36,7 @@ const FilterMenu = () => {
       option,
       setFilters
     });
-  }, [regionFilterRef, nameFilterRef, regionSortRef, nameSortRef]);
+  }, [setFilters, regionFilterRef, nameFilterRef, regionSortRef, nameSortRef]);
 
   const regionFilterHandler = useCallback((option: string) => {
     setRegionFilter({
@@ -47,7 +47,7 @@ const FilterMenu = () => {
       option,
       setFilters
     });
-  }, [regionFilterRef, nameFilterRef, regionSortRef, nameSortRef]);
+  }, [setFilters, regionFilterRef, nameFilterRef, regionSortRef, nameSortRef]);
 
   const nameSortHandler = useCallback((option: string) => {
     setNameSort({
@@ -58,7 +58,7 @@ const FilterMenu = () => {
       option,
       setFilters
     });
-  }, [regionFilterRef, nameFilterRef, regionSortRef, nameSortRef]);
+  }, [setFilters, regionFilterRef, nameFilterRef, regionSortRef, nameSortRef]);
 
   const regionSortHandler = useCallback((option: string) => {
     setRegionSort({
@@ -69,7 +69,7 @@ const FilterMenu = () => {
       option,
       setFilters
     });
-  }, [regionFilterRef, nameFilterRef, regionSortRef, nameSortRef]);
+  }, [setFilters, regionFilterRef, nameFilterRef, regionSortRef, nameSortRef]);
 
   return (
     <Container>

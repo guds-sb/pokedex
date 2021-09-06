@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import { TypeColors, typeColors } from './helpers';
 
-type Container = {
+type ContainerProps = {
   pokeType: TypeColors
 };
 
-export const Container = styled.div<Container>`
+export const Container = styled.div<ContainerProps>`
   display: flex;
   width: 96px;
   height: 56px;

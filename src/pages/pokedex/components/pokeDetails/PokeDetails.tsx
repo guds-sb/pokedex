@@ -1,3 +1,4 @@
+import Text from 'components/text/Text';
 import { PokeDetailsContext } from 'contexts/pokeDetailsContext/PokeDetailsProvider';
 import { useContext } from 'react';
 import DetailsBottomCard from './components/detailsBotttomCard/DetailsBottomCard';
@@ -13,12 +14,19 @@ const PokeDetails = () => {
 
   return (
     <Container>
-      {pokemon && (
-        <>
-          <DetailsTopCard />
-          <DetailsBottomCard />
-        </>
-      )}
+      {pokemon 
+        ? (
+          <>
+            <DetailsTopCard />
+            <DetailsBottomCard />
+          </>
+        )
+        : (
+          <Text>
+            Select a Pokémon on the left to view its details
+          </Text>
+        )
+      }
     </Container>
   );
 }

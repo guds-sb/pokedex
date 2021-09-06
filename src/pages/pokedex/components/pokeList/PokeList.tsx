@@ -33,8 +33,14 @@ const PokeList = () => {
   const scrollAllHandler = () => nextPage();
 
   const selectPokemonHandler = (poke: PokemonDetailsInfo) => {
-    setSelected(poke.id);
-    setPokemon(poke);
+    if (selected === poke.id) {
+      setSelected(-1);
+      setPokemon(null);
+    }
+    else {
+      setSelected(poke.id);
+      setPokemon(poke);
+    }
   };
 
   const listStatus = () => {
