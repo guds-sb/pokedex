@@ -129,6 +129,8 @@ export const setFiltersHandler = ({
   sort,
   inverted
 }: SetFiltersHandler) => {
+  console.log(filter);
+  console.log(sort);
   const processedList = getProcessedList({
     list: listSetup.current.originalList,
     filter,

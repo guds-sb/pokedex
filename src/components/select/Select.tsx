@@ -12,16 +12,17 @@ import {
 type SelectProps = {
   children?: any,
   options: Array<string>,
-  clickHandler: Function
+  selected: string | null,
+  setSelected: Function
 };
 
 const Select = ({
   children,
   options,
-  clickHandler
+  selected,
+  setSelected
 }: SelectProps) => {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
   const container = useRef<any>(null);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const Select = ({
 
   return (
     <Container ref={container}>
-      <Button clickHandler={() => setOpen(!open)} >
+      <Button clickHandler={() => setOpen(!open)}>
         {selected
           ? selected
           : children
@@ -48,7 +49,6 @@ const Select = ({
         <SelectArea>
           <ClearOption
             onClick={() => {
-              clickHandler(null);
               setSelected(null);
               setOpen(false);
             }}
@@ -60,7 +60,6 @@ const Select = ({
           {options.map(option => (
             <SelectOption
               onClick={() => {
-                clickHandler(option);
                 setSelected(option);
                 setOpen(false);
               }}
